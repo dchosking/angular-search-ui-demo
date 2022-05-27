@@ -1,0 +1,21 @@
+<div *ngIf="facet" class="accordion-item">
+  <div class="accordion-title">
+    <a class="h6 mb-0">{{ facet.field }}</a>
+  </div>
+  <div class="collapse show"  >
+    <div class="accordion-content">
+      <ul>
+        <li *ngFor="let facetItem of facet.data">
+          <input
+          class="sui-multi-checkbox-facet__checkbox"
+          type="checkbox"
+          [value]="getValue(facetItem, facet.type)"
+          [checked]="isChecked(getValue(facetItem, facet.type))"
+          (change)="change.emit($event)"
+        />
+          {{ getValue(facetItem, facet.type)}}<span style="float: right">({{facetItem.count}})</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

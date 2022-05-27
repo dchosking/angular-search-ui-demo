@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row mb-5 mt-5">
+    <!-- Search Bar -->
+    <form [formGroup]="searchForm">
+      <input type="text"
+             class="form-control "
+             placeholder="search"
+             formControlName="searchInputValue"
+      >
+    </form>
+    <!-- Search Bar -->
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <!-- Search Facet -->
+      <app-search-facet
+        [checked]="facets['cost']"
+        [facet]="searchState.facets.cost[0]"
+        (change)="handleFacetChange($event, 'cost')"
+      ></app-search-facet>
+      <app-search-facet
+        [checked]="facets['card_class']"
+        [facet]="searchState.facets.card_class[0]"
+        (change)="handleFacetChange($event, 'card_class')"
+      ></app-search-facet>
+      <app-search-facet
+        [checked]="facets['type']"
+        [facet]="searchState.facets.type[0]"
+        (change)="handleFacetChange($event, 'type')"
+      ></app-search-facet>
+      <app-search-facet
+        [checked]="facets['set']"
+        [facet]="searchState.facets.set[0]"
+        (change)="handleFacetChange($event, 'set')"
+      ></app-search-facet>
+      <app-search-facet
+        [checked]="facets['race']"
+        [facet]="searchState.facets.race[0]"
+        (change)="handleFacetChange($event, 'race')"
+      ></app-search-facet>
+      <app-search-facet
+        [checked]="facets['rarity']"
+        [facet]="searchState.facets.rarity[0]"
+        (change)="handleFacetChange($event, 'rarity')"
+      ></app-search-facet>
+      <!-- Search Facet -->
+    </div>
+    <div class="col-10">
+      <!-- Search Content -->
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <ng-container *ngFor="let result of searchState.results">
+          <app-search-result [result]="result"></app-search-result>
+        </ng-container>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <app-search-pagination *ngIf="thereAreResults" [totalPages]="searchState.totalPages"
+                               (pageChanged)="setCurrentPage($event)"></app-search-pagination>
+      </div>
+      <!-- Search Content -->
+    </div>
+  </div>
+</div>

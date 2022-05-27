@@ -1,0 +1,33 @@
+<div class="col">
+  <div class="card shadow-sm">
+    <img class="bd-placeholder-img card-img-top"
+      [src]="imageSrc(result.id.raw)"
+      [alt]="result.name.raw"
+    />
+
+
+    <div class="card-body">
+      <div *ngIf="result.type">Type: {{ result.type.raw }}</div>
+      <div *ngIf="result.race">Race: {{ result.race.raw }}</div>
+      <div *ngIf="result.card_class">
+        Class: {{ result.card_class.raw }}
+      </div>
+      <div>Set: {{ result.set.raw }}</div>
+      <div>Rarity: {{ result.rarity.raw }}</div>
+      <br />
+      <div *ngIf="result.cost">Cost: {{ result.cost.raw }}</div>
+      <div *ngIf="result.attack">Attack: {{ result.attack.raw }}</div>
+      <div *ngIf="result.durability">
+        Durability: {{ result.durability.raw }}
+      </div>
+      <div *ngIf="result.health">Health: {{ result.health.raw }}</div>
+      <div *ngIf="result.armor">Armor: {{ result.armor.raw }}</div>
+      <div *ngIf="result.spell_damage">
+        Spell damage: {{ result.spell_damage.raw }}
+      </div>
+      <div *ngIf="result.overload">Overload: {{ result.overload.raw }}</div>
+      <br />
+      <div *ngIf="result.artist">Artist: {{ result.artist.raw }}</div>
+    </div>
+  </div>
+</div>
